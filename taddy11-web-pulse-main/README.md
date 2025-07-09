@@ -1,73 +1,215 @@
-# Welcome to your Lovable project
+# Sisuni Tech - Complete Web Application
 
-## Project info
+A comprehensive web application for Sisuni Tech Pvt Ltd, featuring a modern tech company website with career portal and backend functionality.
 
-**URL**: https://lovable.dev/projects/d7d8789e-fd2d-4ce9-827f-1914942983b7
+## Features
 
-## How can I edit this code?
+### Frontend
+- **Modern React Application** with TypeScript and Vite
+- **Responsive Design** using Tailwind CSS and shadcn/ui components
+- **Multi-page Application** with React Router
+- **Career Portal** with job listings, filtering, and application system
+- **Contact Forms** with validation and toast notifications
+- **Company Information** pages (About, Services, Why Join Us)
+- **Taddy11 Game** showcase page
 
-There are several ways of editing your application.
+### Backend
+- **Express.js Server** with MongoDB integration
+- **File Upload System** for resume submissions
+- **RESTful API** for job applications
+- **Database Models** for application management
+- **CORS Configuration** for frontend-backend communication
 
-**Use Lovable**
+### Pages
+1. **Home** - Company overview and hero section
+2. **About** - Company story, mission, vision, and values
+3. **Services** - Detailed service offerings
+4. **Taddy11** - Gaming product showcase
+5. **Career** - Job listings with application system
+6. **Why Join Us** - Benefits, culture, and growth opportunities
+7. **Contact** - Contact information and inquiry form
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d7d8789e-fd2d-4ce9-827f-1914942983b7) and start prompting.
+## Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+### Frontend
+- React 18 with TypeScript
+- Vite for build tooling
+- Tailwind CSS for styling
+- shadcn/ui component library
+- React Router for navigation
+- Lucide React for icons
 
-**Use your preferred IDE**
+### Backend
+- Node.js with Express.js
+- MongoDB with Mongoose ODM
+- Multer for file uploads
+- CORS for cross-origin requests
+- dotenv for environment variables
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
+- Node.js (v16 or higher)
+- MongoDB (local or cloud instance)
+- npm or yarn package manager
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd taddy11-web-pulse-main
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. **Environment Setup**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Update the `.env` file with your MongoDB connection string and other configurations.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+4. **Create uploads directory**
+   ```bash
+   mkdir -p uploads/resumes
+   ```
+
+### Running the Application
+
+#### Development Mode (Full Stack)
+```bash
+npm run dev:full
+```
+This runs both the frontend (port 5173) and backend server (port 3001) concurrently.
+
+#### Frontend Only
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+#### Backend Only
+```bash
+npm run server
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+#### Production Build
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+## API Endpoints
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Applications
+- `POST /api/applications/general` - Submit job application
+- `GET /api/applications` - Get all applications (admin)
+- `GET /api/applications/:id` - Get specific application
+- `GET /api/health` - Health check endpoint
 
-## What technologies are used for this project?
+## File Structure
 
-This project is built with:
+```
+taddy11-web-pulse-main/
+├── src/
+│   ├── components/
+│   │   ├── ui/              # shadcn/ui components
+│   │   ├── home/            # Home page components
+│   │   └── layout/          # Layout components (Navbar, Footer)
+│   ├── pages/               # Page components
+│   ├── hooks/               # Custom React hooks
+│   ├── lib/                 # Utility functions
+│   └── main.tsx             # Application entry point
+├── server/
+│   ├── models/              # MongoDB models
+│   ├── routes/              # API routes
+│   └── server.js            # Express server
+├── uploads/                 # File upload directory
+└── public/                  # Static assets
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Features in Detail
 
-## How can I deploy this project?
+### Career Portal
+- **Job Listings**: Display available positions with filtering
+- **Search & Filter**: Search by keywords, filter by department/location
+- **Job Details**: Modal with comprehensive job information
+- **Application System**: Complete application form with file upload
+- **Resume Upload**: Support for PDF, DOC, and DOCX files
+- **Form Validation**: Client-side and server-side validation
 
-Simply open [Lovable](https://lovable.dev/projects/d7d8789e-fd2d-4ce9-827f-1914942983b7) and click on Share -> Publish.
+### Application Management
+- **Database Storage**: All applications stored in MongoDB
+- **File Management**: Resume files stored securely on server
+- **Status Tracking**: Application status management system
+- **Admin Interface**: API endpoints for application management
 
-## Can I connect a custom domain to my Lovable project?
+### Responsive Design
+- **Mobile-First**: Optimized for all device sizes
+- **Modern UI**: Clean, professional design with animations
+- **Accessibility**: WCAG compliant components
+- **Performance**: Optimized loading and rendering
 
-Yes, you can!
+## Environment Variables
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```env
+MONGODB_URI=mongodb://localhost:27017/sisuni-careers
+PORT=3001
+MAX_FILE_SIZE=5242880
+SMTP_HOST=your-smtp-host
+SMTP_PORT=587
+SMTP_USER=your-email
+SMTP_PASS=your-password
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Deployment
+
+### Frontend Deployment
+The frontend can be deployed to any static hosting service:
+- Vercel
+- Netlify
+- AWS S3 + CloudFront
+- GitHub Pages
+
+### Backend Deployment
+The backend can be deployed to:
+- Heroku
+- AWS EC2
+- DigitalOcean
+- Railway
+
+### Database
+- MongoDB Atlas (recommended for production)
+- Local MongoDB instance
+- Docker container
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is proprietary software owned by Sisuni Tech Pvt Ltd.
+
+## Support
+
+For support and questions, contact:
+- Email: contact@sisuni.tech
+- Website: [sisuni.tech](https://sisuni.tech)
+
+## Changelog
+
+### v1.0.0
+- Initial release with complete frontend and backend
+- Career portal with job application system
+- Company information pages
+- Contact and inquiry forms
+- Responsive design implementation
+- MongoDB integration
+- File upload functionality

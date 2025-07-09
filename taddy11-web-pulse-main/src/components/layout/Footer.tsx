@@ -63,7 +63,15 @@ const Footer = () => {
                   to="/career"
                   className="text-gray-300 hover:text-tech-secondary transition-colors"
                 >
-                  Career
+                  Open Positions
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/why-join-us"
+                  className="text-gray-300 hover:text-tech-secondary transition-colors"
+                >
+                  Why Join Us
                 </Link>
               </li>
               <li>

@@ -238,37 +238,59 @@ const Career: React.FC = () => {
     e.preventDefault();
     
     try {
-      // In a real implementation, this would submit to your backend
-      console.log('Application submitted:', applicationData);
+      // Create FormData for file upload
+      const formData = new FormData();
       
-      toast({
-        title: "Application Submitted!",
-        description: "Thank you for your application. We'll review it and get back to you soon.",
+      // Append all form fields
+      Object.keys(applicationData).forEach(key => {
+        if (key === 'resume' && applicationData[key]) {
+          formData.append('resume', applicationData[key]);
+        } else if (key !== 'resume') {
+          formData.append(key, applicationData[key]);
+        }
       });
       
-      setShowApplicationForm(false);
-      setSelectedJob(null);
-      
-      // Reset form
-      setApplicationData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        linkedIn: '',
-        portfolio: '',
-        experience: '',
-        skills: '',
-        coverLetter: '',
-        preferredRole: '',
-        availability: '',
-        expectedSalary: '',
-        resume: null
+      // Submit to backend
+      const response = await fetch('/api/applications/general', {
+        method: 'POST',
+        body: formData
       });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        toast({
+          title: "Application Submitted!",
+          description: "Thank you for your application. We'll review it and get back to you soon.",
+        });
+        
+        setShowApplicationForm(false);
+        setSelectedJob(null);
+        
+        // Reset form
+        setApplicationData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          linkedIn: '',
+          portfolio: '',
+          experience: '',
+          skills: '',
+          coverLetter: '',
+          preferredRole: '',
+          availability: '',
+          expectedSalary: '',
+          resume: null
+        });
+      } else {
+        throw new Error(result.message || 'Failed to submit application');
+      }
     } catch (error) {
+      console.error('Application submission error:', error);
       toast({
         title: "Error",
-        description: "There was an error submitting your application. Please try again.",
+        description: error.message || "There was an error submitting your application. Please try again.",
         variant: "destructive",
       });
     }

@@ -11,6 +11,7 @@ import Services from "./pages/Services";
 import Taddy11 from "./pages/Taddy11";
 import Contact from "./pages/Contact";
 import Career from "./pages/Career";
+import WhyJoinUs from "./pages/WhyJoinUs";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
               <Route path="/taddy11" element={<Taddy11 />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/career" element={<Career />} />
+              <Route path="/why-join-us" element={<WhyJoinUs />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
